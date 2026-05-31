@@ -15,5 +15,6 @@ export const profile = {
   socials: {
     behance: "https://www.behance.net/dxde",
     twitter: "https://twitter.com",
+    instagram: "https://twitter.com",
   },
 };

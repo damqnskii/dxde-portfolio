@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import type { Project } from "@/types/project";
 import { ProjectCard } from "@/components/ProjectCard";
 
@@ -9,7 +12,13 @@ type ProjectGridProps = {
 
 export function ProjectGrid({ projects, title, description }: ProjectGridProps) {
   return (
-    <section className="mx-auto max-w-6xl px-5 py-20 sm:px-6 lg:px-8">
+    <motion.section
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
+      className="mx-auto max-w-6xl px-5 py-20 sm:px-6 lg:px-8"
+    >
       {(title || description) && (
         <div className="mb-10 max-w-2xl">
           {title && (
@@ -23,11 +32,37 @@ export function ProjectGrid({ projects, title, description }: ProjectGridProps) 
         </div>
       )}
 
-      <div className="grid gap-8 md:grid-cols-2">
+      <motion.div
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={{
+          hidden: {},
+          show: {
+            transition: {
+              staggerChildren: 0.08,
+              delayChildren: 0.08,
+            },
+          },
+        }}
+        className="grid gap-8 md:grid-cols-2"
+      >
         {projects.map((project) => (
-          <ProjectCard key={project.slug} project={project} />
+          <motion.div
+            key={project.slug}
+            variants={{
+              hidden: { opacity: 0, y: 24 },
+              show: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.58, ease: [0.22, 1, 0.36, 1] },
+              },
+            }}
+          >
+            <ProjectCard project={project} />
+          </motion.div>
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }

@@ -1,104 +1,137 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowDown, ArrowUpRight, MapPin } from "lucide-react";
+import { motion, type Variants } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import { profile } from "@/data/profile";
 
-const metrics = [
-  { value: profile.stats.projectViews, label: "project views on Behance" },
-  { value: profile.stats.appreciations, label: "project appreciations" },
-  { value: profile.stats.followers, label: "Behance follower" },
-];
+const premiumEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
+
+const introVariants: Variants = {
+  hidden: { opacity: 0, y: 22 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.68,
+      ease: premiumEase,
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const introItem: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.58, ease: premiumEase },
+  },
+};
 
 export function Hero() {
+  const [firstName, ...lastNameParts] = profile.name.split(" ");
+  const lastName = lastNameParts.join(" ");
+
   return (
-    <section className="relative overflow-hidden bg-stone-50">
-      <div className="mx-auto grid min-h-[calc(100vh-73px)] max-w-6xl content-center gap-12 px-5 py-20 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:px-8 lg:py-28">
+    <section className="relative min-h-[760px] overflow-hidden bg-[#f7f7f4] pt-28 sm:pt-32">
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute -right-24 top-14 size-[720px] rounded-full border border-neutral-950/10" />
+        <div className="absolute right-10 top-32 size-[520px] rounded-full border border-neutral-950/10" />
+        <div className="absolute right-[20%] top-[46%] size-4 rounded-full border border-neutral-950/20 bg-white shadow-[0_0_0_7px_rgba(255,255,255,0.75)]" />
+        <div className="absolute right-0 top-20 h-[1px] w-[52rem] rotate-[128deg] bg-white shadow-[0_0_22px_rgba(255,255,255,0.9)]" />
+        <div className="absolute right-[8%] top-[50%] h-[1px] w-[55rem] -rotate-[10deg] bg-white/80 shadow-[0_0_22px_rgba(255,255,255,0.9)]" />
+        <div className="absolute right-52 top-56 size-80 rounded-full bg-neutral-950/[0.035] blur-3xl" />
+      </div>
+
+      <div className="mx-auto grid max-w-7xl gap-16 px-5 pb-24 pt-24 sm:px-8 lg:grid-cols-[1fr_0.72fr] lg:px-10 lg:pb-28 lg:pt-32">
         <motion.div
-          initial={{ opacity: 0, y: 18 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, ease: "easeOut" }}
-          className="flex flex-col justify-center"
+          initial="hidden"
+          animate="show"
+          variants={introVariants}
+          className="relative z-10 flex flex-col justify-center"
         >
-          <div className="mb-8 inline-flex w-fit items-center gap-2 rounded-full border border-neutral-200 bg-white px-4 py-2 text-sm text-neutral-600 shadow-sm">
-            <span className="size-2 rounded-full bg-emerald-500" />
-            {profile.availability}
-          </div>
+          <motion.p
+            variants={introItem}
+            className="mb-9 text-xs font-medium uppercase tracking-[0.42em] text-neutral-500"
+          >
+            Hello, I&apos;m
+          </motion.p>
 
-          <p className="mb-5 flex items-center gap-2 text-sm font-medium uppercase tracking-[0.24em] text-neutral-500">
-            <MapPin className="size-4" aria-hidden="true" />
-            {profile.location}
-          </p>
+          <motion.h1
+            variants={introItem}
+            className="max-w-4xl text-[clamp(4.25rem,10vw,8.8rem)] font-medium leading-[0.92] tracking-[-0.04em] text-neutral-950"
+          >
+            {firstName}
+            {lastName && (
+              <>
+                <br />
+                {lastName}
+              </>
+            )}
+          </motion.h1>
 
-          <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-neutral-950 sm:text-6xl lg:text-7xl">
-            {profile.name}
-          </h1>
-
-          <p className="mt-5 max-w-2xl text-2xl font-medium tracking-tight text-neutral-800 sm:text-3xl">
-            {profile.role}
-          </p>
-
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-neutral-600">
+          <motion.p
+            variants={introItem}
+            className="mt-8 max-w-lg text-lg leading-8 text-neutral-600"
+          >
             {profile.shortIntro}
-          </p>
+          </motion.p>
 
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+          <motion.div
+            variants={introItem}
+            className="mt-10 flex flex-col gap-3 sm:flex-row"
+          >
             <Link
               href="/projects"
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-neutral-950 px-6 text-sm font-medium text-white transition hover:bg-neutral-800"
+              className="inline-flex h-14 items-center justify-center gap-4 rounded-xl bg-neutral-950 px-7 text-sm font-medium text-white shadow-[0_18px_38px_rgba(23,23,23,0.16)] transition hover:-translate-y-0.5 hover:bg-neutral-800"
             >
-              View projects
+              View my work
               <ArrowUpRight className="size-4" aria-hidden="true" />
             </Link>
             <Link
               href="/contact"
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-neutral-300 bg-white px-6 text-sm font-medium text-neutral-950 transition hover:border-neutral-950"
+              className="inline-flex h-14 items-center justify-center gap-4 rounded-xl px-5 text-sm font-medium text-neutral-950 transition hover:-translate-y-0.5"
             >
-              Start a conversation
-              <ArrowDown className="size-4" aria-hidden="true" />
+              Contact me
+              <ArrowUpRight className="size-4" aria-hidden="true" />
             </Link>
-          </div>
+          </motion.div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.12, ease: "easeOut" }}
-          className="flex items-center lg:justify-end"
+          transition={{ duration: 0.74, delay: 0.16, ease: premiumEase }}
+          className="relative z-10 hidden items-center lg:flex lg:justify-end"
         >
-          <div className="w-full max-w-md rounded-[2rem] border border-neutral-200 bg-white p-5 shadow-2xl shadow-neutral-200/70">
-            <div className="rounded-[1.5rem] bg-neutral-950 p-6 text-white">
-              <p className="text-sm uppercase tracking-[0.24em] text-neutral-400">
-                Selected focus
-              </p>
-              <div className="mt-16 space-y-5">
-                <p className="text-3xl font-semibold tracking-tight">
-                  Self-motivated level design with organized execution and
-                  ambitious visual results.
+          <div className="mr-8 mt-20 w-full max-w-72 rounded-2xl border border-white/75 bg-white/82 px-11 py-11 shadow-[0_34px_105px_rgba(23,23,23,0.13)] backdrop-blur-xl xl:mr-16">
+            <div className="space-y-12">
+              <div>
+                <p className="flex items-center gap-5 text-sm font-medium uppercase tracking-[0.32em] text-neutral-400">
+                  <span className="size-2 rounded-full bg-neutral-400" />
+                  Based in
                 </p>
-                <p className="leading-7 text-neutral-300">
-                  Public Behance work includes personal explorations,
-                  marketplace projects, commissions, and fantasy environment
-                  concepts.
+                <p className="mt-6 text-lg font-medium text-neutral-950">
+                  {profile.location}
                 </p>
               </div>
-            </div>
-
-            <div className="mt-5 grid gap-3 sm:grid-cols-3">
-              {metrics.map((metric) => (
-                <div
-                  key={metric.label}
-                  className="rounded-2xl border border-neutral-200 bg-stone-50 p-4"
-                >
-                  <p className="text-2xl font-semibold tracking-tight text-neutral-950">
-                    {metric.value}
-                  </p>
-                  <p className="mt-2 text-xs leading-5 text-neutral-500">
-                    {metric.label}
-                  </p>
-                </div>
-              ))}
+              <div>
+                <p className="text-sm font-medium uppercase tracking-[0.32em] text-neutral-400">
+                  Role
+                </p>
+                <p className="mt-6 text-lg font-medium text-neutral-950">
+                  {profile.role}
+                </p>
+              </div>
+              <div>
+                <p className="text-sm font-medium uppercase tracking-[0.32em] text-neutral-400">
+                  Available for
+                </p>
+                <p className="mt-6 text-lg font-medium text-neutral-950">
+                  {profile.availability.replace("Available for ", "")}
+                </p>
+              </div>
             </div>
           </div>
         </motion.div>

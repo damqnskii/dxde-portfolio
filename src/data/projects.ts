@@ -6,7 +6,7 @@ export const projects: Project[] = [
     title: "Personal Projects",
     subtitle: "A collection of independent level design work",
     category: "Level Design",
-    year: "Behance",
+    year: "2025",
     coverImage: "/projects/personal-projects/cover.jpg",
     description:
       "A Behance project collection focused on personal level design explorations and environment work.",
@@ -197,7 +197,7 @@ export const projects: Project[] = [
     title: "Kingdom",
     subtitle: "Level design environment project",
     category: "Level Design",
-    year: "Behance",
+    year: "2023",
     coverImage: "/projects/kingdom/kingdom1.png",
     description:
       "A level design project named Kingdom from Stoyan Stoyanov's Behance work.",
@@ -205,7 +205,7 @@ export const projects: Project[] = [
       "Kingdom rounds out the Behance project list with a focused environment and layout presentation.",
     images: ["/projects/kingdom/kingdom1.png"],
     tags: ["Level Design", "Environment Design", "Worldbuilding"],
-    featured: true,
+    featured: false,
     liveUrl: "https://www.behance.net/dxde",
   },
 ];

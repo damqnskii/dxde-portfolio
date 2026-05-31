@@ -1,5 +1,5 @@
 import { Hero } from "@/components/Hero";
-import { ProjectGrid } from "@/components/ProjectGrid";
+import { HomeFeaturedWork } from "@/components/HomeFeaturedWork";
 import { projects } from "@/data/projects";
 
 export default function HomePage() {
@@ -9,11 +9,7 @@ export default function HomePage() {
     <main>
       <Hero />
 
-      <ProjectGrid
-        projects={featuredProjects}
-        title="Selected Projects"
-        description="Featured level design work from the Behance portfolio, including personal explorations, marketplace work, and commissions."
-      />
+      <HomeFeaturedWork projects={featuredProjects} />
     </main>
   );
 }

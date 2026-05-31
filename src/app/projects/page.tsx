@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { MotionSection } from "@/components/MotionSection";
 import { ProjectGrid } from "@/components/ProjectGrid";
 import { projects } from "@/data/projects";
 
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <main>
-      <section className="mx-auto max-w-6xl px-5 pb-6 pt-20 sm:px-6 lg:px-8">
+      <MotionSection className="mx-auto max-w-6xl px-5 pb-6 pt-20 sm:px-6 lg:px-8">
         <p className="text-sm font-medium uppercase tracking-[0.24em] text-neutral-500">
           Work
         </p>
@@ -22,7 +23,7 @@ export default function ProjectsPage() {
           A data-driven archive based on the public Behance profile, ready to be
           paired with exported project imagery.
         </p>
-      </section>
+      </MotionSection>
 
       <ProjectGrid projects={projects} />
     </main>

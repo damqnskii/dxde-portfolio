@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink } from "lucide-react";
+import { MotionSection } from "@/components/MotionSection";
 import { ProjectGallery } from "@/components/ProjectGallery";
 import { projects } from "@/data/projects";
 
@@ -45,15 +46,20 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
 
   return (
     <main className="mx-auto max-w-6xl px-5 py-16 sm:px-6 lg:px-8">
-      <Link
-        href="/projects"
-        className="inline-flex items-center gap-2 text-sm font-medium text-neutral-500 transition hover:text-neutral-950"
-      >
-        <ArrowLeft className="size-4" aria-hidden="true" />
-        Back to projects
-      </Link>
+      <MotionSection className="block">
+        <Link
+          href="/projects"
+          className="inline-flex items-center gap-2 text-sm font-medium text-neutral-500 transition hover:-translate-x-1 hover:text-neutral-950"
+        >
+          <ArrowLeft className="size-4" aria-hidden="true" />
+          Back to projects
+        </Link>
+      </MotionSection>
 
-      <section className="grid gap-12 pt-12 lg:grid-cols-[1fr_0.38fr]">
+      <MotionSection
+        delay={0.06}
+        className="grid gap-12 pt-12 lg:grid-cols-[1fr_0.38fr]"
+      >
         <div>
           <p className="text-sm font-medium uppercase tracking-[0.24em] text-neutral-500">
             {project.category} / {project.year}
@@ -71,7 +77,7 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
           </p>
         </div>
 
-        <aside className="h-fit rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+        <aside className="h-fit rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-neutral-200/70">
           <p className="text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
             Details
           </p>
@@ -113,7 +119,7 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
             </Link>
           )}
         </aside>
-      </section>
+      </MotionSection>
 
       <ProjectGallery images={project.images} title={project.title} />
     </main>

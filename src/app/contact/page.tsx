@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ContactForm } from "@/components/ContactForm";
+import { MotionSection } from "@/components/MotionSection";
 import { profile } from "@/data/profile";
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <main>
-      <section className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8 lg:py-28">
+      <MotionSection className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8 lg:py-28">
         <div>
           <p className="text-sm font-medium uppercase tracking-[0.24em] text-neutral-500">
             Contact
@@ -25,7 +26,7 @@ export default function ContactPage() {
             before sending it directly by email.
           </p>
 
-          <div className="mt-10 rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm">
+          <div className="mt-10 rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-neutral-200/70">
             <p className="text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
               Availability
             </p>
@@ -38,10 +39,10 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm sm:p-8">
+        <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm transition duration-300 hover:shadow-xl hover:shadow-neutral-200/70 sm:p-8">
           <ContactForm />
         </div>
-      </section>
+      </MotionSection>
     </main>
   );
 }
