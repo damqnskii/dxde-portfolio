@@ -7,15 +7,18 @@ export const projects: Project[] = [
     subtitle: "A collection of independent level design work",
     category: "Level Design",
     year: "2025",
-    coverImage: "/projects/personal-projects/cover.jpg",
+    coverImage: "/projects/personal-projects/snimka 1.png",
     description:
       "A Behance project collection focused on personal level design explorations and environment work.",
     longDescription:
       "Personal Projects gathers Stoyan Stoyanov's independent level design work, presenting self-directed scenes, layouts, and visual explorations from his Behance portfolio.",
     images: [
-      "/projects/personal-projects/01.jpg",
-      "/projects/personal-projects/02.jpg",
-      "/projects/personal-projects/03.jpg",
+      "/projects/personal-projects/snimka 1.png",
+      "/projects/personal-projects/snimka 2.jpg",
+      "/projects/personal-projects/snimka 3.jpg",
+      "/projects/personal-projects/snimka 4.jpg",
+      "/projects/personal-projects/snimka 5.png",
+      "/projects/personal-projects/snimka 6.jpg",
     ],
     tags: ["Level Design", "Personal Work", "Environment Design"],
     featured: true,
@@ -208,4 +211,5 @@ export const projects: Project[] = [
     featured: false,
     liveUrl: "https://www.behance.net/dxde",
   },
+  
 ];

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ExternalLink, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { profile } from "@/data/profile";
 import { FaBehance, FaInstagram, FaXTwitter } from "react-icons/fa6";
 

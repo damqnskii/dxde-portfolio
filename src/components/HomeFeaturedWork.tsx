@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/types/project";
+import { MoveRight } from "lucide-react";
 
 type HomeFeaturedWorkProps = {
   projects: Project[];
@@ -51,7 +53,7 @@ export function HomeFeaturedWork({ projects }: HomeFeaturedWorkProps) {
         }}
         className="grid gap-7 lg:grid-cols-3"
       >
-        {featuredProjects.map((project, index) => (
+        {featuredProjects.map((project) => (
           <motion.div
             key={project.slug}
             variants={{
@@ -65,31 +67,18 @@ export function HomeFeaturedWork({ projects }: HomeFeaturedWorkProps) {
           >
             <Link href={`/projects/${project.slug}`} className="group block">
               <motion.article
-                whileHover={{ y: -6 }}
-                transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                className="overflow-hidden rounded-xl border border-white/80 bg-white/82 shadow-[0_22px_70px_rgba(23,23,23,0.08)] backdrop-blur transition group-hover:shadow-[0_30px_90px_rgba(23,23,23,0.12)]"
+                transition={{ duration: 0.1, ease: "easeInOut" }}
+                className="overflow-hidden rounded-xl border border-white/90 bg-white/90 shadow-[0_18px_45px_rgba(23,23,23,0.12),0_4px_14px_rgba(23,23,23,0.08)] backdrop-blur transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(23,23,23,0.18),0_8px_22px_rgba(23,23,23,0.10)]"
               >
                 <div className="relative aspect-[1.55] overflow-hidden bg-neutral-100">
-                  <div className="absolute inset-0 bg-[linear-gradient(155deg,#f6f6f3_0%,#e6e6e2_48%,#ffffff_100%)]" />
-                  <div
-                    className={`absolute inset-x-8 top-10 h-40 rounded-lg border border-white/80 bg-white/70 shadow-[0_28px_70px_rgba(23,23,23,0.12)] transition duration-700 group-hover:-translate-y-2 ${
-                      index === 1 ? "-rotate-3" : index === 2 ? "rotate-2" : "-rotate-6"
-                    }`}
-                  >
-                    <div className="flex h-8 items-center gap-2 border-b border-neutral-200/70 px-4">
-                      <span className="size-1.5 rounded-full bg-neutral-300" />
-                      <span className="size-1.5 rounded-full bg-neutral-300" />
-                      <span className="size-1.5 rounded-full bg-neutral-300" />
-                    </div>
-                    <div className="grid h-[calc(100%-2rem)] grid-cols-[0.55fr_1fr] gap-3 p-4">
-                      <div className="rounded-md bg-neutral-950/85" />
-                      <div className="space-y-3">
-                        <div className="h-3 w-3/4 rounded-full bg-neutral-300" />
-                        <div className="h-3 w-1/2 rounded-full bg-neutral-200" />
-                        <div className="mt-5 h-16 rounded-md bg-neutral-200/80" />
-                      </div>
-                    </div>
-                  </div>
+                  <Image
+                    src={project.coverImage}
+                    alt={`${project.title} cover image`}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, 100vw"
+                    className="object-cover transition-opacity duration-300 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent opacity-85 transition-opacity duration-300 ease-out group-hover:opacity-95" />
                 </div>
 
                 <div className="flex items-center justify-between gap-4 px-6 py-5">
@@ -101,8 +90,9 @@ export function HomeFeaturedWork({ projects }: HomeFeaturedWorkProps) {
                       {project.category}
                     </p>
                   </div>
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-full border border-neutral-200 bg-white text-neutral-500 transition group-hover:border-neutral-300 group-hover:text-neutral-950">
-                    <ArrowUpRight className="size-4" aria-hidden="true" />
+                  <span className="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-neutral-500 transition group-hover:text-neutral-950">
+                    View
+                    <MoveRight className="size-4 transition group-hover:translate-x-1" />
                   </span>
                 </div>
               </motion.article>

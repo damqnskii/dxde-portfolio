@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { BackButton } from "@/components/BackButton";
 import { MotionSection } from "@/components/MotionSection";
 import { ProjectGallery } from "@/components/ProjectGallery";
 import { projects } from "@/data/projects";
@@ -45,15 +45,13 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
   }
 
   return (
-    <main className="mx-auto max-w-6xl px-5 py-16 sm:px-6 lg:px-8">
+    <main className="mx-auto max-w-6xl px-5 pb-16 pt-32 sm:px-6 lg:px-8">
       <MotionSection className="block">
-        <Link
-          href="/projects"
-          className="inline-flex items-center gap-2 text-sm font-medium text-neutral-500 transition hover:-translate-x-1 hover:text-neutral-950"
-        >
-          <ArrowLeft className="size-4" aria-hidden="true" />
-          Back to projects
-        </Link>
+        <BackButton
+          fallbackHref="/projects"
+          label="Back to projects"
+          className="inline-flex cursor-pointer items-center gap-2 text-sm font-medium text-neutral-500 transition hover:-translate-x-1 hover:text-neutral-950"
+        />
       </MotionSection>
 
       <MotionSection
@@ -115,7 +113,6 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
               className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-medium text-white transition hover:bg-neutral-800"
             >
               View on Behance
-              <ExternalLink className="size-4" aria-hidden="true" />
             </Link>
           )}
         </aside>
