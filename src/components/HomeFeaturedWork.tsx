@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/types/project";
 import { MoveRight } from "lucide-react";
 
@@ -22,25 +21,13 @@ export function HomeFeaturedWork({ projects }: HomeFeaturedWorkProps) {
       transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
       className="relative mx-auto max-w-7xl px-5 pb-24 pt-14 sm:px-8 lg:px-10"
     >
-      <div className="mb-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p className="text-xs font-medium uppercase tracking-[0.42em] text-neutral-500">
-            Featured Work
-          </p>
-          <h2 className="mt-5 text-3xl font-medium tracking-[-0.03em] text-neutral-950 sm:text-4xl">
-            Some of my recent projects
-          </h2>
-        </div>
-        <Link
-          href="/projects"
-          className="group inline-flex items-center gap-4 text-sm font-medium text-neutral-950 underline underline-offset-4 transition hover:-translate-y-0.5"
-        >
-          View all projects
-          <ArrowUpRight
-            className="size-4 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-            aria-hidden="true"
-          />
-        </Link>
+      <div className="mb-10 text-center">
+        <p className="text-xs font-medium uppercase tracking-[0.42em] text-neutral-500">
+          Featured Work
+        </p>
+        <h2 className="mt-5 text-3xl font-medium tracking-[-0.03em] text-neutral-950 sm:text-4xl">
+          Some of my recent projects
+        </h2>
       </div>
 
       <motion.div
