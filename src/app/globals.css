@@ -1,50 +1,73 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f7f4;
-  --foreground: #111111;
+  --background: #060611;
+  --foreground: #f5f1ff;
+  --panel: #0b0a18;
+  --panel-strong: #100d21;
+  --border: rgba(171, 112, 255, 0.2);
+  --muted: #aaa3b8;
+  --accent: #a855f7;
+  --accent-bright: #c56cff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: Inter, ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --font-mono: "Cascadia Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  background: var(--background);
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at 50% -20%, rgba(124, 58, 237, 0.18), transparent 36rem),
+    linear-gradient(180deg, #060611 0%, #080713 55%, #05050d 100%);
   color: var(--foreground);
   font-family: Inter, ui-sans-serif, system-ui, sans-serif;
   isolation: isolate;
 }
 
-body::before,
-body::after {
+body::before {
   content: "";
   position: fixed;
   inset: 0;
-  pointer-events: none;
-}
-
-body::before {
-  z-index: -2;
-  background:
-    linear-gradient(118deg, rgba(23, 23, 23, 0.055) 0%, transparent 24%),
-    linear-gradient(292deg, rgba(64, 64, 64, 0.05) 0%, transparent 28%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(245, 245, 242, 0.96) 48%, rgba(238, 238, 234, 0.82) 100%);
-}
-
-body::after {
   z-index: -1;
-  opacity: 0.42;
+  pointer-events: none;
+  opacity: 0.2;
   background-image:
-    radial-gradient(circle, rgba(23, 23, 23, 0.16) 0.8px, transparent 0.8px);
-  background-size: 22px 22px;
-  mask-image: linear-gradient(to bottom, transparent, black 16%, black 84%, transparent);
+    linear-gradient(rgba(170, 94, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(170, 94, 255, 0.08) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, black, transparent 80%);
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 ::selection {
-  background: #111111;
+  background: #a855f7;
   color: #ffffff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #060611;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 3px solid #060611;
+  background: #4b216c;
 }

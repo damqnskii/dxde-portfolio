@@ -1,21 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ExternalLink, Gem } from "lucide-react";
 import { BackButton } from "@/components/BackButton";
 import { MotionSection } from "@/components/MotionSection";
 import { ProjectGallery } from "@/components/ProjectGallery";
 import { projects } from "@/data/projects";
 
 type ProjectPageProps = {
-  params: Promise<{
-    slug: string;
-  }>;
+  params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams() {
-  return projects.map((project) => ({
-    slug: project.slug,
-  }));
+  return projects.map((project) => ({ slug: project.slug }));
 }
 
 export async function generateMetadata({
@@ -25,9 +22,7 @@ export async function generateMetadata({
   const project = projects.find((item) => item.slug === slug);
 
   if (!project) {
-    return {
-      title: "Project Not Found",
-    };
+    return { title: "Project Not Found" };
   }
 
   return {
@@ -45,80 +40,77 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
   }
 
   return (
-    <main className="mx-auto max-w-6xl px-5 pb-16 pt-32 sm:px-6 lg:px-8">
-      <MotionSection className="block">
-        <BackButton
-          fallbackHref="/projects"
-          label="Back to projects"
-          className="inline-flex cursor-pointer items-center gap-2 text-sm font-medium text-neutral-500 transition hover:-translate-x-1 hover:text-neutral-950"
-        />
-      </MotionSection>
+    <main className="px-4 pb-10 pt-24 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1500px]">
+        <MotionSection className="border border-violet-400/20 bg-[#0a0816]/94 p-6 sm:p-10">
+          <BackButton
+            fallbackHref="/projects"
+            label="Back to projects"
+            className="inline-flex cursor-pointer items-center gap-2 font-mono text-xs uppercase text-[#9f97ab] transition hover:text-[#ce8cff]"
+          />
 
-      <MotionSection
-        delay={0.06}
-        className="grid gap-12 pt-12 lg:grid-cols-[1fr_0.38fr]"
-      >
-        <div>
-          <p className="text-sm font-medium uppercase tracking-[0.24em] text-neutral-500">
-            {project.category} / {project.year}
-          </p>
-          <h1 className="mt-5 max-w-4xl text-5xl font-semibold tracking-tight text-neutral-950 sm:text-6xl">
-            {project.title}
-          </h1>
-          {project.subtitle && (
-            <p className="mt-5 max-w-2xl text-2xl font-medium tracking-tight text-neutral-700">
-              {project.subtitle}
-            </p>
-          )}
-          <p className="mt-8 max-w-3xl text-lg leading-8 text-neutral-600">
-            {project.longDescription ?? project.description}
-          </p>
-        </div>
-
-        <aside className="h-fit rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-neutral-200/70">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
-            Details
-          </p>
-          <dl className="mt-6 space-y-5 text-sm">
+          <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,1fr)_340px]">
             <div>
-              <dt className="text-neutral-400">Category</dt>
-              <dd className="mt-1 font-medium text-neutral-950">
-                {project.category}
-              </dd>
+              <p className="flex items-center gap-3 font-mono text-xs uppercase text-[#bd68ff]">
+                <Gem className="size-4" aria-hidden="true" />
+                {project.category} / {project.year}
+              </p>
+              <h1 className="mt-5 max-w-4xl font-mono text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+                {project.title}
+              </h1>
+              {project.subtitle && (
+                <p className="mt-5 max-w-2xl text-xl text-[#c7bfce]">
+                  {project.subtitle}
+                </p>
+              )}
+              <p className="mt-7 max-w-3xl text-lg leading-8 text-[#aaa3b8]">
+                {project.longDescription ?? project.description}
+              </p>
             </div>
-            <div>
-              <dt className="text-neutral-400">Source</dt>
-              <dd className="mt-1 font-medium text-neutral-950">
-                {project.year}
-              </dd>
-            </div>
-          </dl>
 
-          <div className="mt-6 flex flex-wrap gap-2">
-            {project.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full bg-stone-100 px-3 py-1 text-sm text-neutral-600"
-              >
-                {tag}
-              </span>
-            ))}
+            <aside className="h-fit border border-violet-400/20 bg-[#0d0a1b] p-6">
+              <h2 className="font-mono text-sm uppercase text-white">
+                Project details
+              </h2>
+              <dl className="mt-6 grid gap-5 text-sm">
+                <div className="border-b border-violet-400/10 pb-4">
+                  <dt className="text-[#766f82]">Category</dt>
+                  <dd className="mt-1 text-[#d5cedd]">{project.category}</dd>
+                </div>
+                <div className="border-b border-violet-400/10 pb-4">
+                  <dt className="text-[#766f82]">Year / Source</dt>
+                  <dd className="mt-1 text-[#d5cedd]">{project.year}</dd>
+                </div>
+              </dl>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="border border-violet-400/15 bg-violet-500/[0.06] px-2.5 py-1 text-xs text-[#9f97ab]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              {project.liveUrl && (
+                <Link
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-7 inline-flex w-full items-center justify-center gap-2 border border-violet-400/60 bg-violet-600/20 px-5 py-3 font-mono text-xs uppercase text-white transition hover:bg-violet-600/40"
+                >
+                  View on Behance
+                  <ExternalLink className="size-4" aria-hidden="true" />
+                </Link>
+              )}
+            </aside>
           </div>
+        </MotionSection>
 
-          {project.liveUrl && (
-            <Link
-              href={project.liveUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-neutral-950 px-5 py-3 text-sm font-medium text-white transition hover:bg-neutral-800"
-            >
-              View on Behance
-            </Link>
-          )}
-        </aside>
-      </MotionSection>
-
-      <ProjectGallery images={project.images} title={project.title} />
+        <ProjectGallery images={project.images} title={project.title} />
+      </div>
     </main>
   );
 }

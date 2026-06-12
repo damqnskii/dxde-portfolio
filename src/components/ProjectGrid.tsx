@@ -13,29 +13,27 @@ type ProjectGridProps = {
 export function ProjectGrid({ projects, title, description }: ProjectGridProps) {
   return (
     <motion.section
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
+      initial={false}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
-      className="mx-auto max-w-6xl px-5 py-20 sm:px-6 lg:px-8"
+      className="mx-auto max-w-[1500px] px-4 py-8 sm:px-6 lg:px-8"
     >
       {(title || description) && (
         <div className="mb-10 max-w-2xl">
           {title && (
-            <h2 className="text-3xl font-semibold tracking-tight text-neutral-950 sm:text-4xl">
+            <h2 className="font-mono text-3xl font-semibold text-white sm:text-4xl">
               {title}
             </h2>
           )}
           {description && (
-            <p className="mt-4 leading-7 text-neutral-600">{description}</p>
+            <p className="mt-4 leading-7 text-[#aaa3b8]">{description}</p>
           )}
         </div>
       )}
 
       <motion.div
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-100px" }}
+        initial={false}
+        animate="show"
         variants={{
           hidden: {},
           show: {
@@ -45,7 +43,7 @@ export function ProjectGrid({ projects, title, description }: ProjectGridProps) 
             },
           },
         }}
-        className="grid gap-8 md:grid-cols-2"
+        className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
       >
         {projects.map((project) => (
           <motion.div

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Gem, MapPin, Sparkles } from "lucide-react";
 import { ContactForm } from "@/components/ContactForm";
 import { MotionSection } from "@/components/MotionSection";
 import { profile } from "@/data/profile";
@@ -11,37 +12,58 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main>
-      <MotionSection className="mx-auto grid max-w-6xl gap-12 px-5 py-20 sm:px-6 lg:grid-cols-[0.8fr_1.2fr] lg:px-8 lg:py-28">
-        <div>
-          <p className="text-sm font-medium uppercase tracking-[0.24em] text-neutral-500">
-            Contact
-          </p>
-          <h1 className="mt-4 text-5xl font-semibold tracking-tight text-neutral-950 sm:text-6xl">
-            Start a project inquiry.
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-neutral-600">
-            Send details about the level design work, commission scope,
-            timeline, and any visual references. The form validates your message
-            before sending it directly by email.
-          </p>
+    <main className="px-4 pb-10 pt-24 sm:px-6 lg:px-8">
+      <MotionSection className="mx-auto grid max-w-[1500px] gap-5 xl:grid-cols-[420px_minmax(0,1fr)]">
+        <div className="grid content-start gap-5">
+          <section className="border border-violet-400/20 bg-[#0a0816]/94 p-7 sm:p-9">
+            <p className="flex items-center gap-3 font-mono text-xs uppercase text-[#bd68ff]">
+              <Gem className="size-4" aria-hidden="true" />
+              Contact
+            </p>
+            <h1 className="mt-6 font-mono text-4xl font-bold leading-tight text-white sm:text-5xl">
+              Let&apos;s build a{" "}
+              <span className="text-[#b45cff]">memorable world.</span>
+            </h1>
+            <p className="mt-6 leading-8 text-[#aaa3b8]">
+              Send the project scope, timeline and visual references. I will
+              review the details and get back to you by email.
+            </p>
+          </section>
 
-          <div className="mt-10 rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-neutral-200/70">
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-neutral-400">
-              Availability
-            </p>
-            <p className="mt-3 text-lg font-medium text-neutral-950">
-              {profile.availability}
-            </p>
-            <p className="mt-3 leading-7 text-neutral-600">
-              Based in {profile.location}. Public work is available on Behance.
-            </p>
-          </div>
+          <section className="border border-violet-400/20 bg-[#0b0917]/92 p-7">
+            <div className="flex items-start gap-4">
+              <Sparkles
+                className="mt-1 size-5 text-[#bd68ff]"
+                aria-hidden="true"
+              />
+              <div>
+                <p className="font-mono text-sm uppercase text-white">
+                  Availability
+                </p>
+                <p className="mt-2 text-[#aaa3b8]">{profile.availability}</p>
+              </div>
+            </div>
+            <div className="mt-6 flex items-start gap-4 border-t border-violet-400/10 pt-6">
+              <MapPin
+                className="mt-1 size-5 text-[#bd68ff]"
+                aria-hidden="true"
+              />
+              <div>
+                <p className="font-mono text-sm uppercase text-white">
+                  Location
+                </p>
+                <p className="mt-2 text-[#aaa3b8]">{profile.location}</p>
+              </div>
+            </div>
+          </section>
         </div>
 
-        <div className="rounded-2xl border border-neutral-200 bg-white p-5 shadow-sm transition duration-300 hover:shadow-xl hover:shadow-neutral-200/70 sm:p-8">
+        <section className="border border-violet-400/20 bg-[#0b0917]/94 p-6 shadow-[0_24px_70px_rgba(0,0,0,0.25)] sm:p-9">
+          <h2 className="mb-8 font-mono text-lg font-semibold uppercase text-white">
+            Project inquiry
+          </h2>
           <ContactForm />
-        </div>
+        </section>
       </MotionSection>
     </main>
   );

@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-full antialiased">
-      <body className="relative flex min-h-full flex-col overflow-x-hidden bg-stone-50 text-neutral-950">
+      <body className="relative flex min-h-full flex-col overflow-x-hidden">
         <Navbar />
         <div className="relative z-10 flex-1">{children}</div>
         <Footer />

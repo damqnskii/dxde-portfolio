@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { Send } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Check, ChevronDown, Send } from "lucide-react";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
@@ -10,8 +10,15 @@ type ContactResponse = {
   message?: string;
 };
 
+const projectTypes = [
+  "Level design",
+  "Commission",
+  "Marketplace project",
+  "Other",
+];
+
 const inputClassName =
-  "w-full rounded-2xl border border-neutral-200 bg-white px-4 py-3 text-sm text-neutral-950 outline-none transition placeholder:text-neutral-400 focus:border-neutral-950 focus:ring-4 focus:ring-neutral-950/5";
+  "w-full border border-violet-400/20 bg-[#080713] px-4 py-3 text-sm text-white outline-none transition placeholder:text-[#615a6d] focus:border-violet-400/70 focus:bg-violet-500/[0.04] focus:ring-2 focus:ring-violet-500/10";
 
 function getTextValue(formData: FormData, name: string) {
   const value = formData.get(name);
@@ -22,7 +29,35 @@ function getTextValue(formData: FormData, name: string) {
 export function ContactForm() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [feedback, setFeedback] = useState("");
+  const [projectType, setProjectType] = useState("");
+  const [projectTypeOpen, setProjectTypeOpen] = useState(false);
+  const projectTypeRef = useRef<HTMLDivElement>(null);
   const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+
+  useEffect(() => {
+    const handlePointerDown = (event: PointerEvent) => {
+      if (
+        projectTypeRef.current &&
+        !projectTypeRef.current.contains(event.target as Node)
+      ) {
+        setProjectTypeOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setProjectTypeOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -36,6 +71,7 @@ export function ContactForm() {
     if (website) {
       setStatus("success");
       form.reset();
+      setProjectType("");
       return;
     }
 
@@ -112,6 +148,7 @@ export function ContactForm() {
       setStatus("success");
       setFeedback("Your message was sent successfully.");
       form.reset();
+      setProjectType("");
     } catch {
       setStatus("error");
       setFeedback("The message could not be sent. Please try again.");
@@ -129,7 +166,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="name"
-            className="text-sm font-medium text-neutral-700"
+            className="font-mono text-xs font-medium uppercase text-[#aaa3b8]"
           >
             Name
           </label>
@@ -148,7 +185,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="email"
-            className="text-sm font-medium text-neutral-700"
+            className="font-mono text-xs font-medium uppercase text-[#aaa3b8]"
           >
             Email
           </label>
@@ -169,7 +206,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="subject"
-            className="text-sm font-medium text-neutral-700"
+            className="font-mono text-xs font-medium uppercase text-[#aaa3b8]"
           >
             Subject
           </label>
@@ -185,31 +222,68 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="projectType"
-            className="text-sm font-medium text-neutral-700"
+            className="font-mono text-xs font-medium uppercase text-[#aaa3b8]"
           >
             Project type
           </label>
-          <select
-            id="projectType"
-            name="projectType"
-            className={`${inputClassName} mt-2`}
-            defaultValue=""
-          >
-            <option value="" disabled>
-              Select one
-            </option>
-            <option value="Level design">Level design</option>
-            <option value="Commission">Commission</option>
-            <option value="Marketplace project">Marketplace project</option>
-            <option value="Other">Other</option>
-          </select>
+          <div ref={projectTypeRef} className="relative mt-2">
+            <input type="hidden" name="projectType" value={projectType} />
+            <button
+              id="projectType"
+              type="button"
+              className={`${inputClassName} flex items-center justify-between gap-4 text-left ${
+                projectType ? "text-white" : "text-[#615a6d]"
+              }`}
+              aria-haspopup="listbox"
+              aria-expanded={projectTypeOpen}
+              onClick={() => setProjectTypeOpen((isOpen) => !isOpen)}
+            >
+              <span>{projectType || "Select one"}</span>
+              <ChevronDown
+                className={`size-4 shrink-0 text-[#bd68ff] transition ${
+                  projectTypeOpen ? "rotate-180" : ""
+                }`}
+                aria-hidden="true"
+              />
+            </button>
+
+            {projectTypeOpen && (
+              <div
+                className="absolute inset-x-0 top-full z-30 mt-1 border border-violet-400/35 bg-[#0d0a1b] p-1 shadow-[0_18px_45px_rgba(0,0,0,0.45)]"
+                role="listbox"
+                aria-label="Project type"
+              >
+                {projectTypes.map((type) => (
+                  <button
+                    key={type}
+                    type="button"
+                    role="option"
+                    aria-selected={projectType === type}
+                    className="flex w-full items-center justify-between px-3 py-2.5 text-left text-sm text-[#b7afc3] transition hover:bg-violet-500/15 hover:text-white"
+                    onClick={() => {
+                      setProjectType(type);
+                      setProjectTypeOpen(false);
+                    }}
+                  >
+                    {type}
+                    {projectType === type && (
+                      <Check
+                        className="size-4 text-[#bd68ff]"
+                        aria-hidden="true"
+                      />
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
       <div>
         <label
           htmlFor="message"
-          className="text-sm font-medium text-neutral-700"
+          className="font-mono text-xs font-medium uppercase text-[#aaa3b8]"
         >
           Message
         </label>
@@ -229,7 +303,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={status === "loading"}
-          className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-neutral-950 px-6 text-sm font-medium text-white transition hover:bg-neutral-800 disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex h-12 items-center justify-center gap-2 border border-violet-400/70 bg-[linear-gradient(135deg,#7c24d8,#a83df0)] px-6 font-mono text-xs font-semibold uppercase text-white shadow-[0_0_24px_rgba(168,61,240,0.2)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {status === "loading" ? "Sending..." : "Send inquiry"}
           <Send className="size-4" aria-hidden="true" />

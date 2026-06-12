@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ProjectMedia } from "@/components/ProjectMedia";
 
 type ProjectGalleryProps = {
   images: string[];
@@ -80,7 +81,7 @@ export function ProjectGallery({ images, title }: ProjectGalleryProps) {
             },
           },
         }}
-        className="mt-16 grid gap-6"
+        className="mt-5 grid gap-5 border border-violet-400/20 bg-[#090714]/90 p-4 sm:p-6"
       >
         {images.map((image, index) => (
           <motion.button
@@ -96,14 +97,13 @@ export function ProjectGallery({ images, title }: ProjectGalleryProps) {
             }}
             whileHover={{ y: -4 }}
             transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-            className="group relative aspect-[16/10] overflow-hidden rounded-2xl border border-neutral-200 bg-neutral-950 text-left shadow-sm outline-none transition focus-visible:ring-4 focus-visible:ring-neutral-950/15"
+            className="group relative aspect-[16/10] overflow-hidden border border-violet-400/20 bg-[#100b20] text-left outline-none transition hover:border-violet-400/55 focus-visible:ring-2 focus-visible:ring-violet-400"
             onClick={() => setActiveIndex(index)}
             aria-label={`Open ${title} project image ${index + 1} fullscreen`}
           >
-            <Image
+            <ProjectMedia
               src={image}
               alt={`${title} project image ${index + 1}`}
-              fill
               sizes="(min-width: 1024px) 1152px, 100vw"
               className="object-cover transition duration-500 group-hover:scale-[1.025]"
             />
@@ -114,7 +114,7 @@ export function ProjectGallery({ images, title }: ProjectGalleryProps) {
       <AnimatePresence>
         {activeImage ? (
           <motion.div
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-neutral-950/94 px-4 py-6 backdrop-blur-sm sm:px-8"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#030208]/96 px-4 py-6 backdrop-blur-sm sm:px-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -126,7 +126,7 @@ export function ProjectGallery({ images, title }: ProjectGalleryProps) {
           >
             <button
               type="button"
-              className="absolute right-4 top-4 z-10 flex size-11 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white backdrop-blur transition hover:bg-white/18 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/20 sm:right-6 sm:top-6"
+              className="absolute right-4 top-4 z-10 flex size-11 items-center justify-center border border-violet-400/30 bg-[#0d0a1b] text-white transition hover:border-violet-400/70 hover:bg-violet-500/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 sm:right-6 sm:top-6"
               onClick={() => setActiveIndex(null)}
               aria-label="Close image viewer"
             >
@@ -137,7 +137,7 @@ export function ProjectGallery({ images, title }: ProjectGalleryProps) {
               <>
                 <button
                   type="button"
-                  className="absolute left-4 top-1/2 z-10 flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white backdrop-blur transition hover:bg-white/18 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/20 sm:left-6"
+                  className="absolute left-4 top-1/2 z-10 flex size-11 -translate-y-1/2 items-center justify-center border border-violet-400/30 bg-[#0d0a1b] text-white transition hover:border-violet-400/70 hover:bg-violet-500/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 sm:left-6"
                   onClick={(event) => {
                     event.stopPropagation();
                     showPreviousImage();
@@ -148,7 +148,7 @@ export function ProjectGallery({ images, title }: ProjectGalleryProps) {
                 </button>
                 <button
                   type="button"
-                  className="absolute right-4 top-1/2 z-10 flex size-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white backdrop-blur transition hover:bg-white/18 focus:outline-none focus-visible:ring-4 focus-visible:ring-white/20 sm:right-6"
+                  className="absolute right-4 top-1/2 z-10 flex size-11 -translate-y-1/2 items-center justify-center border border-violet-400/30 bg-[#0d0a1b] text-white transition hover:border-violet-400/70 hover:bg-violet-500/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-400 sm:right-6"
                   onClick={(event) => {
                     event.stopPropagation();
                     showNextImage();

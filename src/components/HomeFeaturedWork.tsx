@@ -1,92 +1,71 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
+import { ArrowRight, Gem } from "lucide-react";
+import { ProjectMedia } from "@/components/ProjectMedia";
 import type { Project } from "@/types/project";
-import { MoveRight } from "lucide-react";
 
 type HomeFeaturedWorkProps = {
   projects: Project[];
 };
 
 export function HomeFeaturedWork({ projects }: HomeFeaturedWorkProps) {
-  const featuredProjects = projects.slice(0, 3);
-
   return (
     <motion.section
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.72, ease: [0.22, 1, 0.36, 1] }}
-      className="relative mx-auto max-w-7xl px-5 pb-24 pt-14 sm:px-8 lg:px-10"
+      initial={false}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.55 }}
+      className="mt-5 border border-violet-400/20 bg-[#090714]/90 p-5 sm:p-7"
     >
-      <div className="mb-10 text-center">
-        <p className="text-xs font-medium uppercase tracking-[0.42em] text-neutral-500">
-          Featured Work
-        </p>
-        <h2 className="mt-5 text-3xl font-medium tracking-[-0.03em] text-neutral-950 sm:text-4xl">
-          Some of my recent projects
+      <div className="mb-6 flex items-center justify-between gap-4">
+        <h2 className="flex items-center gap-3 font-mono text-base font-semibold uppercase text-white">
+          <Gem className="size-4 text-[#bd68ff]" aria-hidden="true" />
+          Featured projects
         </h2>
+        <Link
+          href="/projects"
+          className="hidden items-center gap-2 font-mono text-xs uppercase text-[#bd68ff] transition hover:text-white sm:inline-flex"
+        >
+          All projects
+          <ArrowRight className="size-4" aria-hidden="true" />
+        </Link>
       </div>
 
-      <motion.div
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-100px" }}
-        variants={{
-          hidden: {},
-          show: { transition: { staggerChildren: 0.08 } },
-        }}
-        className="grid gap-7 lg:grid-cols-3"
-      >
-        {featuredProjects.map((project) => (
-          <motion.div
+      <div className="grid gap-5 md:grid-cols-3">
+        {projects.slice(0, 3).map((project) => (
+          <Link
             key={project.slug}
-            variants={{
-              hidden: { opacity: 0, y: 24 },
-              show: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.58, ease: [0.22, 1, 0.36, 1] },
-              },
-            }}
+            href={`/projects/${project.slug}`}
+            className="group overflow-hidden border border-violet-400/20 bg-[#0d0a1b] transition hover:-translate-y-1 hover:border-violet-400/55 hover:shadow-[0_18px_45px_rgba(88,28,135,0.22)]"
           >
-            <Link href={`/projects/${project.slug}`} className="group block">
-              <motion.article
-                transition={{ duration: 0.1, ease: "easeInOut" }}
-                className="overflow-hidden rounded-xl border border-white/90 bg-white/90 shadow-[0_18px_45px_rgba(23,23,23,0.12),0_4px_14px_rgba(23,23,23,0.08)] backdrop-blur transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_28px_70px_rgba(23,23,23,0.18),0_8px_22px_rgba(23,23,23,0.10)]"
-              >
-                <div className="relative aspect-[1.55] overflow-hidden bg-neutral-100">
-                  <Image
-                    src={project.coverImage}
-                    alt={`${project.title} cover image`}
-                    fill
-                    sizes="(min-width: 1024px) 33vw, 100vw"
-                    className="object-cover transition-opacity duration-300 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent opacity-85 transition-opacity duration-300 ease-out group-hover:opacity-95" />
-                </div>
-
-                <div className="flex items-center justify-between gap-4 px-6 py-5">
-                  <div>
-                    <h3 className="text-base font-medium tracking-tight text-neutral-950">
-                      {project.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-neutral-500">
-                      {project.category}
-                    </p>
-                  </div>
-                  <span className="inline-flex shrink-0 items-center gap-2 text-sm font-medium text-neutral-500 transition group-hover:text-neutral-950">
-                    View
-                    <MoveRight className="size-4 transition group-hover:translate-x-1" />
-                  </span>
-                </div>
-              </motion.article>
-            </Link>
-          </motion.div>
+            <div className="relative aspect-[16/10] overflow-hidden">
+              <ProjectMedia
+                src={project.coverImage}
+                alt={`${project.title} cover image`}
+                sizes="(min-width: 1024px) 24vw, 100vw"
+                className="object-cover transition duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0d0a1b] via-transparent to-transparent" />
+              <span className="absolute left-4 top-4 border border-violet-400/30 bg-[#0a0716]/85 px-2.5 py-1 font-mono text-[10px] uppercase text-[#ce8cff]">
+                {project.category}
+              </span>
+            </div>
+            <div className="p-5">
+              <h3 className="font-mono text-lg font-semibold text-white">
+                {project.title}
+              </h3>
+              <p className="mt-3 line-clamp-2 text-sm leading-6 text-[#9f97ab]">
+                {project.description}
+              </p>
+              <span className="mt-5 inline-flex items-center gap-2 font-mono text-xs uppercase text-[#bd68ff]">
+                View project
+                <ArrowRight className="size-4 transition group-hover:translate-x-1" />
+              </span>
+            </div>
+          </Link>
         ))}
-      </motion.div>
+      </div>
     </motion.section>
   );
 }
