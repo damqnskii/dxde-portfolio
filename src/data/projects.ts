@@ -3,6 +3,7 @@ import type { Project } from "@/types/project";
 export const projects: Project[] = [
   {
     slug: "personal-projects",
+    collection: "personal",
     title: "Personal Projects",
     subtitle: "A collection of independent level design work",
     category: "Level Design",
@@ -26,6 +27,7 @@ export const projects: Project[] = [
   },
   {
     slug: "marketplace-projects",
+    collection: "marketplace",
     title: "Marketplace Projects",
     subtitle: "Level design work prepared for marketplace presentation",
     category: "Level Design",
@@ -45,6 +47,7 @@ export const projects: Project[] = [
   },
   {
     slug: "commission-for-purpled",
+    collection: "commission",
     title: "Commission for Purpled",
     subtitle: "Commissioned level design project",
     category: "Commission",
@@ -64,6 +67,7 @@ export const projects: Project[] = [
   },
   {
     slug: "commission-for-karl-4",
+    collection: "commission",
     title: "Commission for Karl #4",
     subtitle: "Fourth commissioned project in the Karl series",
     category: "Commission",
@@ -83,6 +87,7 @@ export const projects: Project[] = [
   },
   {
     slug: "commission-for-karl-jacobs-3",
+    collection: "commission",
     title: "Commission for Karl Jacobs #3",
     subtitle: "Third commissioned project in the Karl Jacobs series",
     category: "Commission",
@@ -102,6 +107,7 @@ export const projects: Project[] = [
   },
   {
     slug: "commission-for-karl-jacobs-2",
+    collection: "commission",
     title: "Commission for Karl Jacobs #2",
     subtitle: "Second commissioned project in the Karl Jacobs series",
     category: "Commission",
@@ -121,6 +127,7 @@ export const projects: Project[] = [
   },
   {
     slug: "commission-for-karl-jacobs-1",
+    collection: "commission",
     title: "Commission for Karl Jacobs #1",
     subtitle: "First commissioned project in the Karl Jacobs series",
     category: "Commission",
@@ -140,6 +147,7 @@ export const projects: Project[] = [
   },
   {
     slug: "magic-and-mayhem",
+    collection: "personal",
     title: "Magic and Mayhem",
     subtitle: "Fantasy-inspired level design project",
     category: "Level Design",
@@ -159,6 +167,7 @@ export const projects: Project[] = [
   },
   {
     slug: "floating-islands-spawn",
+    collection: "personal",
     title: "Floating Islands Spawn",
     subtitle: "Spawn area concept with floating island composition",
     category: "Level Design",
@@ -178,6 +187,7 @@ export const projects: Project[] = [
   },
   {
     slug: "eternal-realm",
+    collection: "personal",
     title: "Eternal Realm",
     subtitle: "Environment and realm concept",
     category: "Level Design",
@@ -197,6 +207,7 @@ export const projects: Project[] = [
   },
   {
     slug: "kingdom",
+    collection: "personal",
     title: "Kingdom",
     subtitle: "Level design environment project",
     category: "Level Design",

@@ -19,7 +19,8 @@ export function ProjectGrid({ projects, title, description }: ProjectGridProps) 
       className="mx-auto max-w-[1500px] px-4 py-8 sm:px-6 lg:px-8"
     >
       {(title || description) && (
-        <div className="mb-10 max-w-2xl">
+        <div className="mb-8 flex items-end justify-between gap-5 border-b border-violet-400/20 pb-5">
+          <div className="max-w-2xl">
           {title && (
             <h2 className="font-mono text-3xl font-semibold text-white sm:text-4xl">
               {title}
@@ -28,6 +29,10 @@ export function ProjectGrid({ projects, title, description }: ProjectGridProps) 
           {description && (
             <p className="mt-4 leading-7 text-[#aaa3b8]">{description}</p>
           )}
+          </div>
+          <p className="shrink-0 font-mono text-sm uppercase text-[#bd68ff]">
+            {projects.length} {projects.length === 1 ? "project" : "projects"}
+          </p>
         </div>
       )}
 

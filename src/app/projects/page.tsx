@@ -3,12 +3,38 @@ import { Boxes, Gem } from "lucide-react";
 import { MotionSection } from "@/components/MotionSection";
 import { ProjectGrid } from "@/components/ProjectGrid";
 import { projects } from "@/data/projects";
+import type { ProjectCollection } from "@/types/project";
 
 export const metadata: Metadata = {
   title: "Projects | Stoyan Stoyanov",
   description:
     "Level design projects and commissions from Stoyan Stoyanov's Behance portfolio.",
 };
+
+const projectSections: {
+  collection: ProjectCollection;
+  title: string;
+  description: string;
+}[] = [
+  {
+    collection: "personal",
+    title: "Personal Projects",
+    description:
+      "Original worlds and environment concepts developed as personal creative explorations.",
+  },
+  {
+    collection: "marketplace",
+    title: "Marketplace Projects",
+    description:
+      "Polished Minecraft experiences designed for marketplace audiences and production requirements.",
+  },
+  {
+    collection: "commission",
+    title: "Commissions",
+    description:
+      "Bespoke builds and environments created in collaboration with clients and creators.",
+  },
+];
 
 export default function ProjectsPage() {
   return (
@@ -41,7 +67,16 @@ export default function ProjectsPage() {
         </div>
       </MotionSection>
 
-      <ProjectGrid projects={projects} />
+      {projectSections.map((section) => (
+        <ProjectGrid
+          key={section.collection}
+          projects={projects.filter(
+            (project) => project.collection === section.collection,
+          )}
+          title={section.title}
+          description={section.description}
+        />
+      ))}
     </main>
   );
 }

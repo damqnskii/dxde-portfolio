@@ -1,5 +1,8 @@
+export type ProjectCollection = "personal" | "marketplace" | "commission";
+
 export type Project = {
   slug: string;
+  collection: ProjectCollection;
   title: string;
   subtitle?: string;
   category: string;

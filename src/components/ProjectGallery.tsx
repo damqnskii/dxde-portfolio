@@ -81,7 +81,7 @@ export function ProjectGallery({ images, title }: ProjectGalleryProps) {
             },
           },
         }}
-        className="mt-5 grid gap-5 border border-violet-400/20 bg-[#090714]/90 p-4 sm:p-6"
+        className="mx-auto mt-5 grid w-full max-w-6xl gap-5 border border-violet-400/20 bg-[#090714]/90 p-4 sm:p-6"
       >
         {images.map((image, index) => (
           <motion.button
