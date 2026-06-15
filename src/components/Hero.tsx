@@ -1,12 +1,41 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { ProjectMedia } from "@/components/ProjectMedia";
 import { profile } from "@/data/profile";
 
+const heroFrames = [
+  "/projects/personal-projects/personal - fifth.jpg",
+  "/projects/personal-projects/personal - eighth.jpg",
+  "/projects/marketplace-projects/Marketplace - thumbnail.jpg",
+  "/projects/commission-for-purpled/purpled.jpg",
+];
+
 export function Hero() {
+  const [activeFrame, setActiveFrame] = useState(0);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const timer = window.setInterval(() => {
+      setActiveFrame((currentFrame) => {
+        if (currentFrame >= heroFrames.length - 1) {
+          window.clearInterval(timer);
+          return 0;
+        }
+
+        return currentFrame + 1;
+      });
+    }, 2200);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
   return (
     <motion.section
       initial={false}
@@ -14,13 +43,24 @@ export function Hero() {
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className="relative min-h-[520px] overflow-hidden border border-violet-400/20 bg-[#0a0816]"
     >
-      <ProjectMedia
-        src="/projects/personal-projects/snimka 1.png"
-        alt="Minecraft level design environment"
-        sizes="(min-width: 1024px) 70vw, 100vw"
-        priority
-        className="object-cover object-center opacity-60"
-      />
+      {heroFrames.map((frame, index) => (
+        <motion.div
+          key={frame}
+          className="absolute inset-0"
+          initial={false}
+          animate={{ opacity: activeFrame === index ? 0.6 : 0 }}
+          transition={{ duration: 0.9, ease: "easeInOut" }}
+          aria-hidden={activeFrame !== index}
+        >
+          <ProjectMedia
+            src={frame}
+            alt="Minecraft level design environment"
+            sizes="(min-width: 1024px) 70vw, 100vw"
+            priority={index === 0}
+            className="object-cover object-center"
+          />
+        </motion.div>
+      ))}
       <div className="absolute inset-0 bg-[linear-gradient(90deg,#080713_4%,rgba(8,7,19,0.92)_38%,rgba(8,7,19,0.38)_72%,rgba(8,7,19,0.78)_100%)]" />
       <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_50%,#080713_100%)]" />
       <div className="absolute inset-0 opacity-25 [background-image:linear-gradient(rgba(192,107,255,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(192,107,255,0.12)_1px,transparent_1px)] [background-size:32px_32px]" />

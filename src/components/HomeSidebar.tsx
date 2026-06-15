@@ -16,12 +16,6 @@ const collaborators = [
     href: "https://www.youtube.com/@PurpledMC",
     image: "/clients/purpled.jpg",
   },
-  {
-    name: "Ish",
-    handle: "@ish",
-    href: "https://www.youtube.com/@ish",
-    image: "/clients/ish.jpg",
-  },
 ];
 
 function SidebarHeading({ children }: { children: React.ReactNode }) {

@@ -1,5 +1,17 @@
 export type ProjectCollection = "personal" | "marketplace" | "commission";
 
+export type ProjectMediaItem =
+  | {
+      type: "image";
+      src: string;
+      alt?: string;
+    }
+  | {
+      type: "youtube";
+      url: string;
+      title?: string;
+    };
+
 export type Project = {
   slug: string;
   collection: ProjectCollection;
@@ -12,6 +24,7 @@ export type Project = {
   description: string;
   longDescription?: string;
   images: string[];
+  media?: ProjectMediaItem[];
   tags: string[];
   featured?: boolean;
   liveUrl?: string;

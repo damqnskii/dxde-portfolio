@@ -109,7 +109,13 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
           </div>
         </MotionSection>
 
-        <ProjectGallery images={project.images} title={project.title} />
+        <ProjectGallery
+          media={[
+            ...(project.media ?? []),
+            ...project.images.map((src) => ({ type: "image" as const, src })),
+          ]}
+          title={project.title}
+        />
       </div>
     </main>
   );
