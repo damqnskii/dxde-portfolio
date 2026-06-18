@@ -4,15 +4,15 @@ export const projects: Project[] = [
   {
     slug: "personal-projects",
     collection: "personal",
-    title: "Personal Projects",
-    subtitle: "A collection of independent level design work",
+    title: "Personal Collection",
+    subtitle: "",
     category: "Level Design",
-    year: "2025",
+    year: "2021-2025",
     coverImage: "/projects/personal-projects/personal - thumbnail.jpg",
     description:
-      "A Behance project collection focused on personal level design explorations and environment work.",
+      "A collection of personal level design and environment work built over the years.",
     longDescription:
-      "Personal Projects gathers Stoyan Stoyanov's independent level design work, presenting self-directed scenes, layouts, and visual explorations from his Behance portfolio.",
+      "A range of self-directed scenes and visual explorations — built independently and driven by a passion for world-building and environment craft.",
     images: [
       "/projects/personal-projects/personal - first.jpg",
       "/projects/personal-projects/personal - second.png",
@@ -23,22 +23,21 @@ export const projects: Project[] = [
       "/projects/personal-projects/personal - seventh.png",
       "/projects/personal-projects/personal - eighth.jpg",
     ],
-    tags: ["Level Design", "Personal Work", "Environment Design"],
+    tags: ["Level Design", "Personal", "Environment Design"],
     featured: true,
-    liveUrl: "https://www.behance.net/dxde",
   },
   {
     slug: "marketplace-projects",
     collection: "marketplace",
-    title: "Marketplace Projects",
-    subtitle: "Level design work prepared for marketplace presentation",
+    title: "Marketplace Collection",
+    subtitle: "",
     category: "Level Design",
-    year: "Behance",
+    year: "2022-2026",
     coverImage: "/projects/marketplace-projects/Marketplace - thumbnail.jpg",
     description:
-      "A Behance project collection presenting marketplace-oriented level design and environment pieces.",
+      "Level and environment work created specifically for Minecraft Marketplace.",
     longDescription:
-      "Marketplace Projects highlights level design work shaped for public presentation, with an emphasis on readable scenes, crafted layouts, and polished visual direction.",
+      "A selection of pieces built for public release — focused on clean layouts, readable scenes, and a polished visual direction that holds up at scale.",
     images: [
       "/projects/marketplace-projects/Marketplace 1.jpg",
       "/projects/marketplace-projects/Marketplace 2.jpg",
@@ -47,80 +46,76 @@ export const projects: Project[] = [
     ],
     tags: ["Level Design", "Marketplace", "Environment Design"],
     featured: true,
-    liveUrl: "https://www.behance.net/dxde",
   },
   {
     slug: "commission-for-purpled",
     collection: "commission",
-    title: "Commission for Purpled",
-    subtitle: "Commissioned level design project",
+    title: "100 Players Simulate Minecraft`s Deadliest Purge",
+    subtitle: "",
     category: "Commission",
-    year: "Behance",
+    year: "2025",
     coverImage: "https://i.ytimg.com/vi/yWu0vF160rA/maxresdefault.jpg",
     description:
-      "A commissioned project listed on Stoyan Stoyanov's Behance portfolio.",
+      "A temple built for Purpled's Minecraft Purge video.",
     longDescription:
-      "Commission for Purpled is presented as part of Stoyan's Behance work, extending the portfolio with client-oriented level design and environment presentation.",
+      "A cinematic Minecraft temple designed around player flow and strong visual composition, created for Purpled's 100-player challenge video.",
     media: [
       {
         type: "youtube",
         url: "https://www.youtube.com/watch?v=yWu0vF160rA",
-        title: "Survive This City, Win $10,000",
+        title: "100 Players Simulate Minecraft`s Deadliest Purge",
       },
-    ],  
-      images: [
+    ],
+    images: [
       "/projects/commission-for-purpled/purpled.jpg",
     ],
-    tags: ["Commission", "Level Design", "Environment Design"],
+    tags: ["Commission", "Environment Design"],
     featured: true,
-    liveUrl: "https://www.behance.net/dxde",
   },
   {
     slug: "commission-for-karl-4",
     collection: "commission",
-    title: "Commission for Karl #4",
-    subtitle: "Fourth commissioned project in the Karl series",
+    title: "Survive This City, Win $10,000",
+    subtitle: "",
     category: "Commission",
-    year: "Behance",
+    year: "2025",
     coverImage: "https://i.ytimg.com/vi/JNw93Kg8CGg/maxresdefault.jpg",
     description:
-      "A commissioned level design project from the Karl series on Behance.",
+      "A full city built for Karl's Survive This City challenge.",
     longDescription:
-      "Commission for Karl #4 continues the commissioned Karl project series with a dedicated level design presentation.",
+      "A Minecraft city constructed to host Karl's high-stakes $10,000 creator challenge, with a focus on readability and atmosphere.",
     media: [
       {
         type: "youtube",
         url: "https://www.youtube.com/watch?v=JNw93Kg8CGg",
         title: "Survive This City, Win $10,000",
       },
-    ],  
+    ],
     images: [
     ],
     tags: ["Commission", "Level Design", "Karl Series"],
     featured: false,
-    liveUrl: "https://www.behance.net/dxde",
   },
   {
     slug: "commission-for-karl-jacobs-3",
     collection: "commission",
-    title: "Commission for Karl Jacobs #3",
-    subtitle: "Third commissioned project in the Karl Jacobs series",
+    title: "Last Player Standing Wins $100,000",
+    subtitle: "",
     category: "Commission",
-    year: "Behance",
+    year: "2025",
     coverImage: "https://i.ytimg.com/vi/8G-XoTe5SdA/maxresdefault.jpg",
     description:
-      "A commissioned project from the Karl Jacobs series, listed on Behance.",
+      "A large multi-themed island built for Karl's $100,000 challenge.",
     longDescription:
-      "Commission for Karl Jacobs #3 is part of a recurring commissioned level design series in Stoyan's public portfolio.",
+      "A sprawling island with distinct themed zones, each crafted to guide player movement and create varied gameplay experiences.",
     media: [
       {
         type: "youtube",
         url: "https://www.youtube.com/watch?v=8G-XoTe5SdA",
         title: "Last player standing wins 100 000$",
       },
-    ],  
-    
-      images: [
+    ],
+    images: [
       "/projects/commission-for-karl-jacobs-3/karl 3 - first.png",
       "/projects/commission-for-karl-jacobs-3/karl 3 - second.png",
       "/projects/commission-for-karl-jacobs-3/karl 3 - third.png",
@@ -137,20 +132,19 @@ export const projects: Project[] = [
     ],
     tags: ["Commission", "Level Design", "Karl Jacobs"],
     featured: false,
-    liveUrl: "https://www.behance.net/dxde",
   },
   {
     slug: "commission-for-karl-jacobs-2",
     collection: "commission",
-    title: "Commission for Karl Jacobs #2",
-    subtitle: "Second commissioned project in the Karl Jacobs series",
+    title: "Last To Survive Island Wins $10,000",
+    subtitle: "",
     category: "Commission",
-    year: "Behance",
+    year: "2025",
     coverImage: "https://i.ytimg.com/vi/2gR5ZWgdDS0/maxresdefault.jpg",
     description:
-      "A commissioned project from the Karl Jacobs series, listed on Behance.",
+      "A survival island built around atmosphere and exploration.",
     longDescription:
-      "Commission for Karl Jacobs #2 expands the Karl Jacobs commission series with another level design presentation.",
+      "A large-scale island designed to feel lived-in and discoverable, with visual appeal driving the player through each area.",
     media: [
       {
         type: "youtube",
@@ -165,114 +159,31 @@ export const projects: Project[] = [
       "/projects/commission-for-karl-jacobs-2/karl 2 - fourth.png",
       "/projects/commission-for-karl-jacobs-2/karl 2 - fifth.png",
     ],
-
     tags: ["Commission", "Level Design", "Karl Jacobs"],
     featured: false,
-    liveUrl: "https://www.behance.net/dxde",
   },
   {
     slug: "commission-for-karl-jacobs-1",
     collection: "commission",
-    title: "Commission for Karl Jacobs #1",
-    subtitle: "First commissioned project in the Karl Jacobs series",
+    title: "$10,000 Beast Games in Minecraft!",
+    subtitle: "",
     category: "Commission",
-    year: "Behance",
-
+    year: "2025",
     coverImage: "https://i.ytimg.com/vi/jaSJFwGRwRM/maxresdefault.jpg",
     description:
-      "The first Karl Jacobs commissioned project shown on Stoyan's Behance profile.",
+      "A set of themed levels built for Karl's Beast Games challenge.",
     longDescription:
-      "Commission for Karl Jacobs #1 introduces the Karl Jacobs commission series in the portfolio's project archive.",
-
+      "Multiple challenge levels sharing a unified theme, each designed to deliver a clear and engaging contestant experience.",
     media: [
       {
         type: "youtube",
         url: "https://www.youtube.com/watch?v=jaSJFwGRwRM",
-        title: "10,000 Beast Games in Minecraft!",
+        title: "$10,000 Beast Games in Minecraft!",
       },
-    ],  
+    ],
     images: [
     ],
     tags: ["Commission", "Level Design", "Karl Jacobs"],
     featured: false,
-    liveUrl: "https://www.behance.net/dxde",
   },
-  // {
-  //   slug: "magic-and-mayhem",
-  //   collection: "personal",
-  //   title: "Magic and Mayhem",
-  //   subtitle: "Fantasy-inspired level design project",
-  //   category: "Level Design",
-  //   year: "Behance",
-  //   coverImage: "/projects/magic-and-mayhem/cover.jpg",
-  //   description:
-  //     "A fantasy-themed level design project listed on the Behance portfolio.",
-  //   longDescription:
-  //     "Magic and Mayhem presents a fantasy-focused environment concept, adding a more atmospheric direction to Stoyan's level design work.",
-  //   images: [
-  //     "/projects/magic-and-mayhem/01.jpg",
-  //     "/projects/magic-and-mayhem/02.jpg",
-  //   ],
-  //   tags: ["Level Design", "Fantasy", "Environment Design"],
-  //   featured: false,
-  //   liveUrl: "https://www.behance.net/dxde",
-  // },
-  // {
-  //   slug: "floating-islands-spawn",
-  //   collection: "personal",
-  //   title: "Floating Islands Spawn",
-  //   subtitle: "Spawn area concept with floating island composition",
-  //   category: "Level Design",
-  //   year: "Behance",
-  //   coverImage: "/projects/floating-islands-spawn/cover.jpg",
-  //   description:
-  //     "A level design project centered on a floating islands spawn environment.",
-  //   longDescription:
-  //     "Floating Islands Spawn explores a vertical, sky-oriented environment composition for a spawn area concept.",
-  //   images: [
-  //     "/projects/floating-islands-spawn/01.jpg",
-  //     "/projects/floating-islands-spawn/02.jpg",
-  //   ],
-  //   tags: ["Level Design", "Spawn", "Environment Design"],
-  //   featured: false,
-  //   liveUrl: "https://www.behance.net/dxde",
-  // },
-  // {
-  //   slug: "eternal-realm",
-  //   collection: "personal",
-  //   title: "Eternal Realm",
-  //   subtitle: "Environment and realm concept",
-  //   category: "Level Design",
-  //   year: "Behance",
-  //   coverImage: "/projects/eternal-realm/cover.jpg",
-  //   description:
-  //     "A level design project named Eternal Realm from the Behance portfolio.",
-  //   longDescription:
-  //     "Eternal Realm is presented as an environment-focused project with a strong world-building direction.",
-  //   images: [
-  //     "/projects/eternal-realm/01.jpg",
-  //     "/projects/eternal-realm/02.jpg",
-  //   ],
-  //   tags: ["Level Design", "Environment Design", "Worldbuilding"],
-  //   featured: false,
-  //   liveUrl: "https://www.behance.net/dxde",
-  // },
-  // {
-  //   slug: "kingdom",
-  //   collection: "personal",
-  //   title: "Kingdom",
-  //   subtitle: "Level design environment project",
-  //   category: "Level Design",
-  //   year: "2023",
-  //   coverImage: "/projects/kingdom/kingdom1.png",
-  //   description:
-  //     "A level design project named Kingdom from Stoyan Stoyanov's Behance work.",
-  //   longDescription:
-  //     "Kingdom rounds out the Behance project list with a focused environment and layout presentation.",
-  //   images: ["/projects/kingdom/kingdom1.png"],
-  //   tags: ["Level Design", "Environment Design", "Worldbuilding"],
-  //   featured: false,
-  //   liveUrl: "https://www.behance.net/dxde",
-  // },
-  
 ];

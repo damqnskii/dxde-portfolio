@@ -4,7 +4,7 @@ export const profile = {
   location: "Bulgaria",
   email: "",
   shortIntro:
-    "Level Designer, self-motivated and well-organized, consistently achieving ambitious results.",
+    "I build Minecraft worlds and environments. Atmosphere, layout, and player experience come first.",
   availability: "Available for freelance projects",
   memberSince: "September 25, 2023",
   stats: {
@@ -13,7 +13,6 @@ export const profile = {
     followers: "1",
   },
   socials: {
-    behance: "https://www.behance.net/dxde",
     twitter: "https://twitter.com",
     instagram: "https://twitter.com",
   },

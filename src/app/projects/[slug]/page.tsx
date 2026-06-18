@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ExternalLink, Gem } from "lucide-react";
+import { Gem } from "lucide-react";
 import { BackButton } from "@/components/BackButton";
 import { MotionSection } from "@/components/MotionSection";
 import { ProjectGallery } from "@/components/ProjectGallery";
@@ -93,18 +92,6 @@ export default async function ProjectDetailsPage({ params }: ProjectPageProps) {
                   </span>
                 ))}
               </div>
-
-              {project.liveUrl && (
-                <Link
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-7 inline-flex w-full items-center justify-center gap-2 border border-violet-400/60 bg-violet-600/20 px-5 py-3 font-mono text-xs uppercase text-white transition hover:bg-violet-600/40"
-                >
-                  View on Behance
-                  <ExternalLink className="size-4" aria-hidden="true" />
-                </Link>
-              )}
             </aside>
           </div>
         </MotionSection>

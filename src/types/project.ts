@@ -27,6 +27,5 @@ export type Project = {
   media?: ProjectMediaItem[];
   tags: string[];
   featured?: boolean;
-  liveUrl?: string;
   githubUrl?: string;
 };

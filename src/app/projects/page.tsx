@@ -8,7 +8,7 @@ import type { ProjectCollection } from "@/types/project";
 export const metadata: Metadata = {
   title: "Projects | Stoyan Stoyanov",
   description:
-    "Level design projects and commissions from Stoyan Stoyanov's Behance portfolio.",
+    "Level design projects and commissions from Stoyan Stoyanov's portfolio.",
 };
 
 const projectSections: {
