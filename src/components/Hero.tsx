@@ -75,9 +75,9 @@ export function Hero() {
           {profile.name} / {profile.role}
         </p>
         <h1 className="max-w-3xl font-mono text-4xl font-bold leading-[1.08] text-white sm:text-5xl lg:text-6xl">
-          Building immersive{" "}
+          Crafting worlds since{" "}
           <span className="text-[#b45cff] [text-shadow:0_0_24px_rgba(180,92,255,0.45)]">
-            Minecraft worlds
+            2019
           </span>
         </h1>
         <p className="mt-6 max-w-xl text-base leading-7 text-[#b7afc3] sm:text-lg">
