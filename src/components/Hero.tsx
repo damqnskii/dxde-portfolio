@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { ProjectMedia } from "@/components/ProjectMedia";
 import { profile } from "@/data/profile";
 
@@ -65,12 +65,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_50%,#080713_100%)]" />
       <div className="absolute inset-0 opacity-25 [background-image:linear-gradient(rgba(192,107,255,0.12)_1px,transparent_1px),linear-gradient(90deg,rgba(192,107,255,0.12)_1px,transparent_1px)] [background-size:32px_32px]" />
 
-      <div className="relative z-10 flex min-h-[520px] max-w-3xl flex-col justify-center px-6 py-16 sm:px-10 lg:px-12">
-        <div className="mb-7 inline-flex w-fit items-center gap-2 border border-violet-400/30 bg-violet-500/10 px-4 py-2 font-mono text-xs uppercase text-[#d28cff]">
-          <Sparkles className="size-3.5" aria-hidden="true" />
-          {profile.availability}
-        </div>
-
+      <div className="relative z-10 flex min-h-[520px] max-w-3xl -translate-y-5 flex-col justify-center px-6 py-16 sm:-translate-y-7 sm:px-10 lg:px-12">
         <p className="mb-4 font-mono text-sm uppercase text-[#a69daf]">
           {profile.name} / {profile.role}
         </p>

@@ -30,28 +30,29 @@ function SidebarHeading({ children }: { children: React.ReactNode }) {
 export function HomeSidebar() {
   return (
     <aside className="grid content-start gap-5">
-      <section className="border border-violet-400/20 bg-[#0b0917]/92 p-6 shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
-        <SidebarHeading>About me</SidebarHeading>
-        <p className="mt-5 leading-7 text-[#aaa3b8]">
-          Level designer focused on readable spaces, strong atmosphere and
-          memorable Minecraft environments. Every project balances gameplay,
-          composition and visual storytelling.
-        </p>
-        <div className="relative mx-auto mt-7 aspect-square w-36 overflow-hidden border border-violet-400/25 bg-violet-500/10">
-          <Image
-            src="/icon.png"
-            alt={`${profile.name} pixel avatar`}
-            fill
-            sizes="144px"
-            className="object-cover"
-          />
-        </div>
-      </section>
+    <section className="border border-violet-400/20 bg-[#0b0917]/92 p-6 shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
+  <SidebarHeading>About me</SidebarHeading>
+  <p className="mt-5 leading-7 text-[#aaa3b8]">
+    Level and environment designer with 6+ years of experience building Minecraft worlds for creators and personal projects.
+  </p>
+  <p className="mt-3 leading-7 text-[#aaa3b8]">
+    Known for strong atmosphere, readable layouts, and spaces that feel intentional from every angle.
+  </p>
+  <div className="relative mx-auto mt-7 aspect-square w-36 overflow-hidden border border-violet-400/25 bg-violet-500/10">
+    <Image
+      src="/icon.png"
+      alt={`${profile.name} pixel avatar`}
+      fill
+      sizes="144px"
+      className="object-cover"
+    />
+  </div>
+</section>
 
       <section className="border border-violet-400/20 bg-[#0b0917]/92 p-6 shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
         <SidebarHeading>Worked with</SidebarHeading>
         <p className="mt-4 text-sm leading-6 text-[#8f889e]">
-          Selected creator collaborations and commissioned Minecraft work.
+         
         </p>
         <div className="mt-5 grid gap-3">
           {collaborators.map((collaborator) => (
